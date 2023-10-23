@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
 
-        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #F9F9F9; height: 80px;">
+        <nav class="navbar navbar-expand-md sticky-top navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="{% url "home" %}">
               <img src="{% static "img/logo.png" %}" alt="" width="120px" height="60px">
@@ -43,51 +43,44 @@
                 <li class="nav-item">
                   <a class="nav-link active" href="{% url "home" %}">Home</a>
                 </li>
-                {% comment %} <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Anime
-                  </a>
-                  <ul class="dropdown-menu bg-transparent text-dark " aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">My Dress up Darling</a></li>
-                    <li><a class="dropdown-item" href="#">jujutsu kaisen</a></li>
-                  </ul>
-                </li> {% endcomment %}
-                
+        
                 <li class="nav-item dropdown">
-                  
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Cartoons
                   </a>
-                  
-                  <ul class="dropdown-menu bg-transparent text-dark " aria-labelledby="navbarDropdown">
+        
+                  <ul class="dropdown-menu bg-transparent text-dark" aria-labelledby="navbarDropdown">
                     {% for x in categories_c %}
-                    <li><a class="dropdown-item" href="{% url 'category' category_slug=x.slug %}">{{ x.name }}</a></li>                    {% endfor %}
+                    <li><a class="dropdown-item" href="{% url 'category' category_slug=x.slug %}">{{ x.name }}</a></li>
+                    {% endfor %}
                   </ul>
                 </li>
-                
-                <li class="nav-item">
+        
+                <li class="nav-item" style="white-space: nowrap;">
                   <a class="nav-link" href="{% url "contact" %}">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="white-space: nowrap;">
                   <a class="nav-link" href="{% url "about" %}">About Us</a>
                 </li>
               </ul>
-              <form class="d-flex" method= "POST" action= "{% url "search" %}" >
+              <form class="d-flex" method="POST" action="{% url "search" %}">
                 {% csrf_token %}
                 <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
               </form>
-              <ul class="navbar-nav ms-auto">
+              {% comment %} <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                   <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Logout</a>
+                  <a class nav-link" href="#">Logout</a>
                 </li>
-              </ul>
+              </ul> {% endcomment %}
             </div>
           </div>
         </nav>
+        
+        
 
 
     </head>
