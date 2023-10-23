@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicon demoProject.wsgi
+web: python manage.py migrate && gunicorn demoProject.wsgi
