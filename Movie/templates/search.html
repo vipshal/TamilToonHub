@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if search %}
+{% for searchs in search_v %}
+<title>{{searchs.title}}</title>
+{% endfor %}
+{% endif %}
+
+{% endblock title %}
+
+{% block body %}
+
+        
+<body style="background-color:#F9F9F9; font-family: 'Cormorant Garamond', serif;
+font-family: 'Young Serif', serif;">
+
+<div class="container-fluid">
+  <br>
+  {% if search %}
+      <div class="row" style="margin-top:20px; display: flex;">
+          {% for searchs in search_v %}
+              <div class="col-md-3" style="flex: 0 0 auto; margin-top:25px;">
+                  <div class="card">
+                      <div class="category-image">
+                          <a href="{% url "homepage" searchs.id %}">
+                              <img src="{{searchs.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">{{searchs.title}}</h5>
+                          <p class="card-text">{{searchs.id}}This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+  {% else %}
+    <h1>{{message}}</h1>
+  {% endif %}
+</div>
+
+
+<script src="https://vjs.zencdn.net/8.6.0/video.min.js"></script>
+
+</body>
+
+{% endblock body %}
+
+
+
+
+
+
+

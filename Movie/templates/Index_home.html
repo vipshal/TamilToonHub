@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{video.title}}</title>
+{% endblock title %}
+
+{% block body %}
+<body style="background-color:#F9F9F9; font-family: 'Cormorant Garamond', serif;
+font-family: 'Young Serif', serif;">
+
+<div class="container" >
+
+    <h2 class="text-center">{{video.title}}</h2><br>
+        
+
+<center><video id="my-video" class="video-js "
+    controls
+    preload="auto"
+    width="640"
+    height="364"
+   
+    {% if video.poster %}
+    poster="{{video.poster.url}}"
+    {% endif %}
+    data-setup="{
+    'controls': true,
+    'autoplay': false,
+    'preload': 'auto'
+    }"
+  >
+    <source src="{{video.movie.url}}" type="video/mp4" />
+  </video></center><br>
+
+    <p style="font-size:1.5rem; font-style:none;">{{video.description}}</p>
+
+  
+</div>
+<script src="https://vjs.zencdn.net/8.6.0/video.min.js"></script>
+
+</body>
+
+{% endblock body %}

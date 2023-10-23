@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>{{category.name}}</title>
+
+{% endblock title %}
+
+{% block body %}
+
+<body style="background-color:#F9F9F9; font-family: 'Cormorant Garamond', serif;
+font-family: 'Young Serif', serif;">
+
+    <div class="container-fluid">
+    <br>{% if category %}<h3 class="text-center">{{category.name}}</h2>
+        <br>
+        <h3>{{cat.name}}</h3><br>
+        <div class="row" style="margin-top:20px;">
+            {% for obj in video_c %}
+                
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="category-image">
+                                <a href="{% url "homepage" obj.id %}">
+                                    <img src="{{obj.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{obj.title}}</h5>
+                                <p class="card-text">{{obj.id}}This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+             
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+        
+        {% comment %} {% for x in video_c %}
+        
+        <div style="display:inline-block; margin-left:75px; margin-bottom:50px">
+        <h2 class="text-center">{{x.title}}</h2><br>
+        
+        <video id="my-video"  class="video-js "
+                    controls
+                    preload="auto"
+                    width="540"
+                    height="364"
+                   
+                    {% if x.poster %}
+                    poster="{{x.poster.url}}"
+                    {% endif %}
+                    data-setup="{
+                    'controls': true,
+                    'autoplay': false,
+                    'preload': 'auto'
+                    }"
+                    
+                    >
+                    <source src="{{x.movie.url}}" type="video/mp4" />
+                  </video><br> 
+                  <p style="margin-top:25px;">{{x.description}}</p>      
+                </div>
+                
+        {% endfor %}
+        
+    </div> {% endcomment %}
+</body>
+
+{% endblock body %}

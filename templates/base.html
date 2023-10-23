@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block title %}
+        {% endblock title %}
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="https://vjs.zencdn.net/8.6.0/video-js.css" rel="stylesheet" />        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="{% static "js/script.js" %}" async defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+
+        {% comment %} font Styles{% endcomment %}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300&family=Young+Serif&display=swap" rel="stylesheet">
+
+        {% comment %} plyr {% endcomment %}
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+
+        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #F9F9F9; height: 80px;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url "home" %}">
+              <img src="{% static "img/logo.png" %}" alt="" width="120px" height="60px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url "home" %}">Home</a>
+                </li>
+                {% comment %} <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Anime
+                  </a>
+                  <ul class="dropdown-menu bg-transparent text-dark " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">My Dress up Darling</a></li>
+                    <li><a class="dropdown-item" href="#">jujutsu kaisen</a></li>
+                  </ul>
+                </li> {% endcomment %}
+                
+                <li class="nav-item dropdown">
+                  
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cartoons
+                  </a>
+                  
+                  <ul class="dropdown-menu bg-transparent text-dark " aria-labelledby="navbarDropdown">
+                    {% for x in categories_c %}
+                    <li><a class="dropdown-item" href="{% url 'category' category_slug=x.slug %}">{{ x.name }}</a></li>                    {% endfor %}
+                  </ul>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url "contact" %}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url "about" %}">About Us</a>
+                </li>
+              </ul>
+              <form class="d-flex" method= "POST" action= "{% url "search" %}" >
+                {% csrf_token %}
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+              </form>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+
+    </head>
+    <script>
+  </script>
+    {% block body %}
+    {% endblock body %}
+ 
+</html>
+
