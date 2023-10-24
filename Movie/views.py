@@ -17,7 +17,7 @@ def Search(request):
 def homePage(request,movie_id):
     categories_c = Category.objects.all()
     video = Video.objects.get(pk = movie_id)
-    return render(request,'index_home.html',{"video":video,"categories_c":categories_c})
+    return render(request,'player.html',{"video":video,"categories_c":categories_c})
 
 def contact(request):
     categories_c = Category.objects.all()

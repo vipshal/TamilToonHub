@@ -133,7 +133,6 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-
 AWS_ACCESS_KEY_ID = 'AKIAZDPZZBTP4N6SRQHE'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'tamiltoonhub'
