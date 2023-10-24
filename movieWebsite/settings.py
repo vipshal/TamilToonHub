@@ -128,7 +128,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR,"media/")
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+
+AWS_ACCESS_KEY_ID = 'AKIAZDPZZBTP4N6SRQHE'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'tamiltoonhub'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'ca-central-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

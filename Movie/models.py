@@ -15,9 +15,9 @@ class Category(models.Model):
 class Video(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    movie = models.FileField(upload_to="video/%y")
-    poster = models.FileField(upload_to="poster/%y",blank=True)
-    image = models.FileField(upload_to="FrontImage/%y",blank=True)
+    movie = models.FileField(upload_to="video/")
+    poster = models.FileField(upload_to="poster/",blank=True)
+    image = models.FileField(upload_to="FrontImage/",blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE , default=True)
     
     def __str__(self):
