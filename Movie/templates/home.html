@@ -1,11 +1,15 @@
 {% extends "base.html" %}
+
 {% load static %}
+
 {% block title %}
+
 <title>TamilToonHub</title>
+
 {% endblock title %}
 
-{% block body %}
 
+{% block body %}
 <body style="background-color:#F9F9F9; font-family: 'Cormorant Garamond', serif;
 font-family: 'Young Serif', serif;">
 
@@ -20,23 +24,19 @@ font-family: 'Young Serif', serif;">
         <div class="carousel-item active">
           <img src="{% static "img/one.jpg" %}" class="d-block w-100 img-responsive" style="max-height: 550px; max-width: 100%; " alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <!-- Caption content here -->
           </div>
         </div>
         <div class="carousel-item">
           <img src="{% static "img/imagetom.jpeg" %}" class="d-block w-100 img-responsive" style="max-height: 550px; max-width: 100%; " alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <!-- Caption content here -->
           </div>
         </div>
         <div class="carousel-item">
           <img src="{% static "img/ben.jpg" %}" class="d-block w-100 img-responsive" style="max-height: 550px; max-width: 100%; " alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <!-- Caption content here -->
           </div>
         </div>
       </div>
-      <!-- Remove the next and previous buttons -->
       <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -53,12 +53,14 @@ font-family: 'Young Serif', serif;">
     <br>
     <div class="container-fluid">
         <h3>Recently added</h3><br>
-        <div id="recentlyAddedCarousel" class="carousel carousel-dark slide" data-bs-touch="false" >
-            <div class="carousel-inner">
-                {% for chunk in chunked_video_h %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}" style="transition: transform 0.1s ease-in-out;">
-                        <div class="row" style="margin-top:20px;">
-                            {% for obj in chunk %}
+    
+        <!-- Desktop Carousel (multiple cards) -->
+        <div class="d-none d-md-block">
+            <div id="recentlyAddedCarousel" class="carousel carousel-dark slide" data-bs-touch="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="transition: transform 0.1s ease-in-out;">
+                        <div class="row" style="margin-top: 20px;">
+                            {% for obj in video_h %}
                                 {% if obj.image %}
                                     <div class="col-md-3">
                                         <div class="card">
@@ -73,21 +75,63 @@ font-family: 'Young Serif', serif;">
                                             </div>
                                         </div>
                                     </div>
+                                    {% if forloop.counter|divisibleby:4 %}
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" style="transition: transform 0.1s ease-in-out;">
+                                        <div class="row" style="margin-top: 20px;">
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+                <button class="carousel-control-prev" style="width: 50px;" type="button" data-bs-target="#recentlyAddedCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" style="background-color: black;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" style="width: 50px;" type="button" data-bs-target="#recentlyAddedCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" style="background-color: black;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <button class="carousel-control-prev" style="width:50px;" type="button" data-bs-target="#recentlyAddedCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="background-color: black; " aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" style="width:50px;" type="button" data-bs-target="#recentlyAddedCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="background-color: black;" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
+    
+        <!-- Mobile Carousel (single card) -->
+        <div class="d-md-none">
+            <div id="recentlyAddedCarouselMobile" class="carousel carousel-dark slide" data-bs-touch="false">
+                <div class="carousel-inner">
+                    {% for obj in video_h %}
+                        {% if obj.image %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}" style="transition: transform 0.1s ease-in-out;">
+                                <div class="card" style="margin-top: 20px;">
+                                    <div class="category-image">
+                                        <a href="{% url 'homepage' obj.id %}">
+                                            <img src="{{ obj.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ obj.title }}</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" style="width: 50px;" type="button" data-bs-target="#recentlyAddedCarouselMobile" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" style="background-color: black;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" style="width: 50px;" type="button" data-bs-target="#recentlyAddedCarouselMobile" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" style="background-color: black;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
 
 
         
@@ -133,6 +177,7 @@ font-family: 'Young Serif', serif;">
     </div>
     {% endfor %}
 </div>
+
 
 </body>
 {% endblock body %}
