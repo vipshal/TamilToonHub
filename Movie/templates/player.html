@@ -8,12 +8,14 @@
 <body style="background-color: #F9F9F9; font-family: 'Cormorant Garamond', serif;
 font-family: 'Young Serif', serif;">
 
-  <div class="container">
-      <br>
-      <h2 class="text-center">{{video.title}}</h2><br><br>
+<div class="container">
+  <br>
+  <h2 class="text-center">{{video.title}}</h2><br><br>
 
+  <!-- Large Display -->
+  <div class="d-none d-sm-block">
       <div class="d-flex justify-content-center">
-          <video id="my-video" class="video-js" controls preload="auto" width="480" height="270" 
+          <video id="my-video" class="video-js" controls preload="auto" width="592" height="370" 
               {% if video.poster %}
               poster="{{video.poster.url}}"
               {% endif %}
@@ -24,11 +26,28 @@ font-family: 'Young Serif', serif;">
               }">
               <source src="{{video.movie.url}}" type="video/mp4" />
           </video>
-      </div><br>
-
-      <p style="font-size: 1.5rem; font-style: none;">{{video.description}}</p>
-
+      </div>
   </div>
+
+  <!-- Small Display (Mobile) -->
+  <div class="d-block d-sm-none">
+      <div class="d-flex justify-content-center">
+          <video id="my-video-mobile" class="video-js" controls preload="auto" width="100%" 
+              {% if video.poster %}
+              poster="{{video.poster.url}}"
+              {% endif %}
+              data-setup="{
+              'controls': true,
+              'autoplay': false,
+              'preload': 'auto'
+              }">
+              <source src="{{video.movie.url}}" type="video/mp4" />
+          </video>
+      </div>
+  </div><br>
+
+  <p style="font-size: 1.5rem; font-style: none;">{{video.description}}</p>
+</div>
 
 
 
