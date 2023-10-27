@@ -3,6 +3,7 @@ boto3==1.28.69
 botocore==1.31.69
 dj-static==0.0.6
 Django==4.2.5
+django-cors-headers==4.3.0
 django-environ==0.11.2
 django-storages==1.14.2
 gunicorn==21.2.0

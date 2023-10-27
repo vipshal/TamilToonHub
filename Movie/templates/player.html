@@ -8,7 +8,30 @@
 <body style="background-color: #F9F9F9; font-family: 'Cormorant Garamond', serif;
 font-family: 'Young Serif', serif;">
 
-<style>
+<div class="container">
+  <br>
+  <h2 class="text-center">{{video.title}}</h2><br><br>
+
+  <!-- Large Display -->
+  <div >
+      <div class="d-flex justify-content-center">
+          <video id="my-video" class="video-js" controls playsinline preload="auto" width="592" height="370" 
+              {% if video.poster %}
+              poster="{{video.poster.url}}"
+              {% endif %}
+              data-setup="{
+              'controls': true,
+              'autoplay': false,
+              'preload': 'auto'
+              }">
+              <source src="{{video.movie.url}}" type="video/mp4">
+          </video>
+      </div>
+      <p style="font-size: 1.5rem; font-style: none;">{{video.description}}</p>
+  </div>
+</div>
+  <style>
+
   @media (max-width: 768px) {
     video {
         width: 100%;
@@ -20,92 +43,8 @@ font-family: 'Young Serif', serif;">
         bottom: 0;
         object-fit: cover;
     }
-
-    .video-controls {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-    }
-    
-    .play-pause-button {
-      float: left;
-    }
-    
-    .volume-control {
-      float: right;
-    }
-    
-    .fullscreen-button {
-      float: right;
-    }
-    
 }
 </style>
-
-<div class="container">
-  <br>
-  <h2 class="text-center">{{video.title}}</h2><br><br>
-
-  <!-- Large Display -->
-      <div class="d-flex justify-content-center">
-        <video id="video-player" controls
-              {% if video.poster %}
-              poster="{{video.poster.url}}"
-              {% endif %}>
-              <source src="{{video.movie.url}}" type="video/mp4" />
-          </video>
-          <div class="video-controls">
-            <button class="play-pause-button">Play/Pause</button>
-            <input type="range" class="volume-control" min="0" max="1" step="0.1">
-            <button class="fullscreen-button">Fullscreen</button>
-          </div>
-      </div>
-
-
-
-<script>
-  // JavaScript
-  
-  var videoPlayer = document.getElementById("video-player");
-  
-  // Play/Pause button functionality
-  document.querySelector(".play-pause-button").addEventListener("click", function() {
-    if (videoPlayer.paused) {
-      videoPlayer.play();
-    } else {
-      videoPlayer.pause();
-    }
-  });
-  
-  // Volume control functionality
-  document.querySelector(".volume-control").addEventListener("change", function() {
-    videoPlayer.volume = this.value;
-  });
-  
-  // Fullscreen button functionality
-  document.querySelector(".fullscreen-button").addEventListener("click", function() {
-    videoPlayer.requestFullscreen();
-  });
-  
-  // Handle fullscreen mode activation
-  document.addEventListener("fullscreenchange", function() {
-    if (document.fullscreenElement) {
-      // Fullscreen mode activated
-    } else {
-      // Fullscreen mode exited
-    }
-  });
-  
-  // Handle video format handling
-  videoPlayer.addEventListener("error", function() {
-    // Handle video format error
-  });
-  
-  </script>
   <!-- Small Display (Mobile) -->
   {% comment %} <div class="d-block d-sm-none">
       <div class="d-flex justify-content-center">
