@@ -43,9 +43,6 @@ font-family: 'Young Serif', serif;">
                 .carousel-inner img {
                     height: 300px; 
                 }
-                .carousel-control-prev, .carousel-control-next {
-                    display: none; 
-                }
             }
         </style>
         <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -142,54 +139,96 @@ font-family: 'Young Serif', serif;">
             </div>
         </div>
     </div>
-    
-    
 
 
         
+    <!-- Desktop Version Carousel -->
+<div class="d-none d-md-block">
     {% for cat in categories_c %}
-    
-    <div id="carousel-{{ cat.id }}" class="carousel carousel-dark slide" data-bs-touch="false">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container-fluid" style="margin-top: 20px;">
-                    <h3>{{ cat.name }}</h3><br>
-                    <div class="row">
-                        {% for obj in video_h %}
-                        {% if obj.image and obj.category == cat %}
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="category-image">
-                                    <a href="{% url 'homepage' obj.id %}">
-                                        <img src="{{ obj.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ obj.title }}</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div id="carousel-{{ cat.id }}" class="carousel carousel-dark slide" data-bs-touch="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container-fluid" style="margin-top: 20px;">
+                        <h3>{{ cat.name }}</h3><br>
+                        <div class="row">
+                            {% for obj in video_h %}
+                            {% if obj.image and obj.category == cat %}
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="category-image">
+                                        <a href="{% url 'homepage' obj.id %}">
+                                            <img src="{{ obj.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ obj.title }}</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
                                 </div>
                             </div>
+                            {% endif %}
+                            {% endfor %}
                         </div>
-                        {% endif %}
-                        {% endfor %}
                     </div>
                 </div>
             </div>
+
+            <button class="carousel-control-prev" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class "carousel-control-next" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-
-        <button class="carousel-control-prev" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-
-        <button class="carousel-control-next" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
     {% endfor %}
 </div>
 
+<!-- Mobile Version Single-Slide Carousel -->
+<div class="d-block d-md-none">
+    {% for cat in categories_c %}
+        <div id="carousel-{{ cat.id }}-mobile" class="carousel carousel-dark slide" data-bs-touch="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container-fluid" style="margin-top: 20px;">
+                        <h3>{{ cat.name }}</h3><br>
+                        <div class="row">
+                            {% for obj in video_h %}
+                            {% if obj.image and obj.category == cat %}
+                            <div class="col-12"> <!-- Display as a single card on mobile -->
+                                <div class="card">
+                                    <div class="category-image">
+                                        <a href="{% url 'homepage' obj.id %}">
+                                            <img src="{{ obj.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ obj.title }}</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}-mobile" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" style="width:50px;" type="button" data-bs-target="#carousel-{{ cat.id }}-mobile" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    {% endfor %}
+</div>
 
 </body>
 {% endblock body %}
