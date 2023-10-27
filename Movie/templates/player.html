@@ -13,7 +13,6 @@ font-family: 'Young Serif', serif;">
   <h2 class="text-center">{{video.title}}</h2><br><br>
 
   <!-- Large Display -->
-  <div class="d-none d-sm-block">
       <div class="d-flex justify-content-center">
           <video id="my-video" controls playsinline preload="auto" width="592" height="370" 
               {% if video.poster %}
@@ -27,7 +26,6 @@ font-family: 'Young Serif', serif;">
               <source src="{{video.movie.url}}" type="video/mp4" />
           </video>
       </div>
-  </div>
 
   @media (max-width: 768px) {
     video {
