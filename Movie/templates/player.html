@@ -35,35 +35,13 @@ font-family: 'Young Serif', serif;">
   @media (max-width: 768px) {
     video {
         width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+@@ -20,92 +43,8 @@
         bottom: 0;
         object-fit: cover;
     }
-}
-</style>
-  <!-- Small Display (Mobile) -->
-  {% comment %} <div class="d-block d-sm-none">
-      <div class="d-flex justify-content-center">
-          <video id="my-video-mobile" class="video-js" controls playsinline preload="auto" width="100%" 
-              {% if video.poster %}
-              poster="{{video.poster.url}}"
-              {% endif %}
-              data-setup="{
-              'controls': true,
-              'autoplay': false,
-              'preload': 'auto'
-              }">
-              <source src="{{video.movie.url}}" type="video/mp4" />
-          </video>
-      </div>
-  </div><br>
 
-  <p style="font-size: 1.5rem; font-style: none;">{{video.description}}</p>
-</div> {% endcomment %}
+  }
+</style>
 
 </body>
 
