@@ -30,7 +30,6 @@ def about(request):
 def home(request):
     categories_c = Category.objects.all()
     video_h = Video.objects.all()
-    # chunked_video_h = [video_h[i:i + 4] for i in range(0, len(video_h), 4)]
     return render(request,'home.html',{"video_h":video_h, "categories_c":categories_c, "category":category,})
 
 def category(request, category_slug=None):
@@ -43,4 +42,5 @@ def category(request, category_slug=None):
         video_c = Video.objects.filter(category=category)
     
     return render(request, 'category_data.html', {"video_c": video_c, "categories_c": categories_c, "category": category})
+
 
