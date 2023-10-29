@@ -18,6 +18,7 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     movie = models.FileField(upload_to="video/")
+    movieWebm = models.FileField(upload_to="video/",blank=True)
     poster = models.FileField(upload_to="poster/",blank=True)
     image = models.FileField(upload_to="FrontImage/",blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE , default=True)
