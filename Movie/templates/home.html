@@ -124,7 +124,7 @@ font-family: 'Young Serif', serif;">
         <div class="d-md-none">
             <div id="recentlyAddedCarouselMobile" class="carousel carousel-dark slide" data-bs-touch="false">
                 <div class="carousel-inner">
-                    {% for obj in video_h %}
+                    {% for obj in video_h reversed %}
                         {% if obj.image %}
                             <div class="carousel-item {% if forloop.first %}active{% endif %}" style="transition: transform 0.1s ease-in-out;">
                                 <div class="card" style="margin-top: 20px;">
