@@ -50,7 +50,7 @@
                     Cartoons
                   </a>
         
-                  <ul class="dropdown-menu bg-transparent text-dark" aria-labelledby="navbarDropdown">
+                  <ul class="dropdown-menu bg-light text-dark" aria-labelledby="navbarDropdown">
                     {% for x in categories_c %}
                     <li><a class="dropdown-item" href="{% url 'category' category_slug=x.slug %}">{{ x.name }}</a></li>
                     {% endfor %}
