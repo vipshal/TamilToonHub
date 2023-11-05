@@ -1,6 +1,7 @@
 
 import os
 import environ
+import cloudinary_storage
 
 env = environ.Env()
 environ.Env.read_env()
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'Movie',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -135,6 +137,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dewqs0o66',
+    'API_KEY': env("CLOUD_API_KEY"),
+    'API_SECRET': env("CLOUD_API_SECRET_KEY"),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY")
 # AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_KEY")
