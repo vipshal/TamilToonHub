@@ -21,6 +21,8 @@ class Video(models.Model):
     poster = models.FileField(upload_to="poster/",blank=True)
     image = models.FileField(upload_to="FrontImage/",blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE , default=True)
+    class Meta:
+        ordering = ('title',)
     
     def __str__(self):
         return self.title
