@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost","127.0.0.1","tamiltoonhub.up.railway.app"]
 CSRF_TRUSTED_ORIGINS = ['https://tamiltoonhub.up.railway.app']
@@ -139,19 +139,13 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dewqs0o66',
-    'API_KEY': env("CLOUD_API_KEY"),
-    'API_SECRET': env("CLOUD_API_SECRET_KEY"),
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY")
-# AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_KEY")
-# AWS_STORAGE_BUCKET_NAME = 'tamiltoonhub01'
-# AWS_S3_SIGNATURE_NAME = 's3v4',
-# AWS_S3_REGION_NAME = 'eu-north-1'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL =  None
-# AWS_S3_VERITY = True
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_KEY")
+AWS_STORAGE_BUCKET_NAME = 'tamiltoonhub02'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
