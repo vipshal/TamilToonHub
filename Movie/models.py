@@ -22,7 +22,7 @@ class Video(models.Model):
     image = models.FileField(upload_to="FrontImage/",blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE , default=True)
     class Meta:
-        ordering = ('title',)
+        ordering = ('movie',)
     
     def __str__(self):
         return self.title
